@@ -1,5 +1,5 @@
 library(tidyverse)
-load("~/Users/nurhalizahassan/Desktop/myvec---Time-Series-/myvec.RData")
+load("~/Desktop/myvec---Time-Series-/myvec.RData")
 
 acf(myvec, 500)
 ts <- ts(myvec, frequency = 50)
@@ -33,10 +33,30 @@ dtw <- function (A, B) {
   }
   return (C[M,N])
 }
+dtw(A, B)
 
 # identifying letters
-lettera <- read_csv("/Users/nurhalizahassan/Desktop/myvec---Time-Series-/CSV_Files/char1_A.csv")
-lettere <- read_csv("/Users/nurhalizahassan/Desktop/myvec---Time-Series-/CSV_Files/char1_E.csv")
-letterm <- read_csv("/Users/nurhalizahassan/Desktop/myvec---Time-Series-/CSV_Files/char1_M.csv")
-lettero <- read_csv("/Users/nurhalizahassan/Desktop/myvec---Time-Series-/CSV_Files/char1_O.csv")
-letterunknown <- read_csv("/Users/nurhalizahassan/Desktop/myvec---Time-Series-/CSV_Files/char4_.csv")
+char_a <- read_csv("/Users/nurhalizahassan/Desktop/myvec---Time-Series-/CSV_Files/char1_A.csv")
+char_e <- read_csv("/Users/nurhalizahassan/Desktop/myvec---Time-Series-/CSV_Files/char1_E.csv")
+char_m <- read_csv("/Users/nurhalizahassan/Desktop/myvec---Time-Series-/CSV_Files/char1_M.csv")
+char_o <- read_csv("/Users/nurhalizahassan/Desktop/myvec---Time-Series-/CSV_Files/char1_O.csv")
+char_4 <- read_csv("/Users/nurhalizahassan/Desktop/myvec---Time-Series-/CSV_Files/char4_.csv")
+
+# compare to letter a
+distance_a <- dtw(char_a,char_4)
+distance_a
+
+# compare to letter e
+distance_e <- dtw(char_e,char_4)
+distance_e
+
+# compare to letter m
+distance_m <- dtw(char_m,char_4)
+distance_m
+
+# compare to letter o
+distance_o <- dtw(char_o,char_4)
+distance_o
+
+min(c(distance_a, distance_e, distance_m, distance_o))
+
